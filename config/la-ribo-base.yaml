@@ -1,0 +1,57 @@
+flow_module_conf:
+  autoencoder_ckpt_path: null
+  latent_preprocess:
+    mode: whiten
+    stats_path: null
+    eps: 1.0e-06
+  coarse_preprocess:
+    mode: global_scale
+    stats_path: null
+    eps: 1.0e-06
+  autoencoder_conf:
+    num_nt_types: 4
+    num_torsions: 10
+    latent_dim: 16
+    explicit_backbone:
+      mode: p_c4prime_n
+      zero_center: true
+    decoder_conf:
+      relpos_dim: 64
+      dist_num_bins: 16
+      dist_min: 0.0
+      dist_max: 32.0
+      token_dim: 256
+      pair_dim: 128
+      cond_dim: 64
+      num_layers: 6
+      num_heads: 8
+      use_qkln: true
+  flow_model_conf:
+    latent_dim: 16
+    explicit_backbone_mode: p_c4prime_n
+    coarse_dim: 9
+    relpos_dim: 64
+    dist_num_bins: 16
+    dist_min: 0.0
+    dist_max: 32.0
+    time_emb_dim: 64
+    token_dim: 512
+    pair_dim: 256
+    cond_dim: 128
+    num_layers: 12
+    num_heads: 8
+    use_qkln: true
+    transition_expansion: 4
+    pair_update:
+      enabled: false
+  sampling_conf:
+    self_condition: true
+    sampling_schedule:
+      bb_coarse:
+        kind: power
+        power: 1.25
+      local_latents:
+        kind: power
+        power: 2.0
+runtime_conf:
+  device: auto

@@ -1,0 +1,13 @@
+[project]
+name = "la-ribo"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "cuequivariance-ops-torch-cu13==0.10.0; sys_platform == 'linux'",
+    "cuequivariance-torch==0.10.0",
+    "einops==0.8.2",
+    "numpy==2.4.6",
+    "pydantic==2.13.4",
+    "pyyaml==6.0.3",
+    "torch==2.12.0",
+]
